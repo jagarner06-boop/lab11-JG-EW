@@ -2,13 +2,15 @@ import unittest
 from calculator import *
 
 class TestCalculator(unittest.TestCase):
-    ######### Partner 2
-    # def test_add(self): # 3 assertions
-    #     fill in code
+    def test_add(self):
+        self.assertEqual(add(1, 2), 1+2)
+        self.assertEqual(add(-5,944.6), -5+944.6)
+        self.assertEqual(add(3.14159265,-036745.22),3.14159265+ -036745.22)
 
-    # def test_subtract(self): # 3 assertions
-    #     fill in code
-    # ##########################
+    def test_subtract(self):
+        self.assertEqual(subtract(1, 2), 1-2)
+        self.assertEqual(subtract(-5,944.6), -5-944.6)
+        self.assertEqual(subtract(3.14159265,-036745.22),3.14159265-(-036745.22))
 
     ######## Partner 1
     # def test_multiply(self): # 3 assertions
@@ -18,21 +20,20 @@ class TestCalculator(unittest.TestCase):
     #     fill in code
     # ##########################
 
-    ######## Partner 2
-    # def test_divide_by_zero(self): # 1 assertion
-    #     # call division function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     div(0, 5)
-    #     fill in code
+    def test_divide_by_zero(self): # 1 assertion
+        with self.assertRaises(ZeroDivisionError):
+            div(0,5)
 
-    # def test_logarithm(self): # 3 assertions
-    #     fill in code
+    def test_logarithm(self): # 3 assertions
+        self.assertAlmostEqual(logarithm(2,4), math.log(4,2))
+        self.assertAlmostEqual(logarithm(65, 9), math.log(9, 65))
+        self.assertAlmostEqual(logarithm(5, 42), math.log(42, 5))
 
-    # def test_log_invalid_base(self): # 1 assertion
-    #     # use same technique from test_divide_by_zero
-    #     fill in code
-    # ##########################
-    
+
+    def test_log_invalid_base(self): # 1 assertion
+        with self.assertRaises(ValueError):
+            logarithm(-6,-5)
+
     ######## Partner 1
     # def test_log_invalid_argument(self): # 1 assertion
     #     # call log function inside, example:
